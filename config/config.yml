@@ -1,0 +1,17 @@
+# Menu settings
+menu:
+  blog_posts:
+    name: Articles
+    url: /lato/blog
+    icon: home
+    position: 89
+    permission: 6
+
+# Custom assets settings
+# assets:
+#  starter_application_css:
+#    name: lato_blog/application
+#    type: css
+#  starter_application_js:
+#    name: lato_blog/application
+#    type: js

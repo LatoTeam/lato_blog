@@ -1,0 +1,33 @@
+<%
+block = view(:layout, :block).new
+
+searchbar = view(:component, :searchbar).new(elements: @search_posts,
+            url: lato_blog.posts_path, filter: :title_cont,
+            style: :rounded)
+
+new_button = view(:component, :button).new(title: CORE_LANG['vocabolary']['new'],
+             url: lato_blog.new_post_path, size: :small)
+
+actionbar = view(:layout, :actionbar).new(title: BLOG_LANG['vocabolary']['articles'],
+            widgets: [
+              {component: searchbar, align: :left},
+              {component: new_button, align: :right}
+            ])
+
+index = view(:layout, :index).new(head: [BLOG_LANG['vocabolary']['title']],
+        elements: @posts, attributes: [:title], link: lato_blog.posts_path,
+        show_link: false)
+
+%>
+
+<%=raw actionbar %>
+
+<div class="content-row">
+  <%=raw block.open %>
+
+    <%=raw index %>
+
+    <%= will_paginate @posts %>
+
+  <%=raw block.close %>
+</div>
